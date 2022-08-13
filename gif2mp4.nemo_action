@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=GIF to MP4
+Comment=Use ffmpeg convert gif to mp4
+Exec=gif2mp4 %F
+Dependencies=gif2mp4;
+Icon-Name=mate-color-manager
+Selection=notnone
+Extensions=gif;
+Quote=double

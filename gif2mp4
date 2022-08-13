@@ -1,0 +1,30 @@
+#!/bin/bash
+# nemo 
+# Licensed under GPLv3
+
+readonly script_name="$(basename "$0")"
+#echo $script_name
+
+if (( $# == 0 )); then
+        printf "Usage: %s file [file...]\n" "$script_name"
+        exit 1
+fi
+
+if ! [ -x "$(command -v ffmpeg)" ] then
+        printf "Error: ffmpeg is not installd"
+        exit 1
+fi
+
+while (( $# > 0 )); do
+        file="$1"
+        #dirname="$(dirname -- "$file")"
+        #filename="$(basename -s .gif -- "$file")"
+        newfile="$(echo "$file" | cut -d . -f1)"
+        if [ "${file##*.}"x = "gif"x ]; then
+                ffmpeg -r 30 -i $file -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $newfile.mp4 > /dev/null 2>&1
+                notify-send --urgency=normal "$script_name" "Conversion done"
+        else
+                notify-send --urgency=critical "$script_name" "Failed !!!"
+        fi
+        shift
+done
