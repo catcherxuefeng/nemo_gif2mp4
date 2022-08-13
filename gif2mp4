@@ -10,7 +10,7 @@ if (( $# == 0 )); then
         exit 1
 fi
 
-if ! [ -x "$(command -v ffmpeg)" ] then
+if ! [ -x "$(command -v ffmpeg)" ]; then
         printf "Error: ffmpeg is not installd"
         exit 1
 fi
