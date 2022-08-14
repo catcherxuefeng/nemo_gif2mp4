@@ -1,5 +1,6 @@
 # nemo_gif2mp4
 nemo action qucik gif to mp4
+![](https://s3.bmp.ovh/imgs/2022/08/14/3cd795a063b4bad1.gif)
 # install
 **need install ffmpeg first**
 ```sh
